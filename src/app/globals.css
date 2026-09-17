@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f8f9fc;
   --foreground: #172033;
+}
+
+.dark {
+  --background: #0f1117;
+  --foreground: #e2e8f0;
 }
 
 @theme inline {
@@ -19,7 +26,15 @@ body {
 }
 
 @layer components {
-  .panel { @apply rounded-2xl border border-slate-200/80 bg-white shadow-[0_2px_8px_-4px_rgba(15,23,42,0.1)]; }
-  .step { @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-violet-50 text-[11px] font-semibold text-violet-600; }
-  .section-title { @apply text-sm font-semibold tracking-tight text-slate-900; }
+  .panel {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-[0_2px_8px_-4px_rgba(15,23,42,0.1)]
+           dark:border-slate-700/60 dark:bg-slate-800/80 dark:shadow-[0_2px_8px_-4px_rgba(0,0,0,0.5)];
+  }
+  .step {
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-violet-50 text-[11px] font-semibold text-violet-600
+           dark:bg-violet-900/40 dark:text-violet-400;
+  }
+  .section-title {
+    @apply text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100;
+  }
 }
